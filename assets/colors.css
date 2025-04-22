@@ -1,0 +1,89 @@
+:root {
+    /* CSS HEX */
+    --platinum: #E4E5E7ff;
+    --antiflash-white: #E9EAECff;
+    --brunswick-green: #114B45ff;
+    --timberwolf: #D4D6D7ff;
+    --ash-gray: #9AA4A0ff;
+    --dark-green: #132C28ff;
+
+    /* CSS HSL */
+    --platinum: hsla(220, 6%, 90%, 1);
+    --antiflash-white: hsla(220, 7%, 92%, 1);
+    --brunswick-green: hsla(174, 63%, 18%, 1);
+    --timberwolf: hsla(200, 4%, 84%, 1);
+    --ash-gray: hsla(156, 5%, 62%, 1);
+    --dark-green: hsla(170, 40%, 12%, 1);
+
+    /* --------------------------------------------------- */
+
+    /* CSS HEX */
+    --antiflash-white: #EAECEEff;
+    --brunswick-green: #043E35ff;
+    --platinum: #E4E5E7ff;
+    --gray: #7C7872ff;
+    --dark-green: #072725ff;
+    --timberwolf: #D4D6D7ff;
+
+    /* CSS HSL */
+    --antiflash-white: hsla(210, 11%, 93%, 1);
+    --brunswick-green: hsla(171, 88%, 13%, 1);
+    --platinum: hsla(220, 6%, 90%, 1);
+    --gray: hsla(36, 4%, 47%, 1);
+    --dark-green: hsla(176, 70%, 9%, 1);
+    --timberwolf: hsla(200, 4%, 84%, 1);
+
+    /* --------------------------------------------------- */
+
+    /* CSS HEX */
+    --platinum: #E7E8EAff;
+    --gray: #7C7872ff;
+    --dark-slate-gray: #2A3B35ff;
+    --platinum-2: #DDDFE0ff;
+    --brunswick-green: #114B45ff;
+    --brunswick-green-2: #043E35ff;
+
+    /* CSS HSL */
+    --platinum: hsla(220, 7%, 91%, 1);
+    --gray: hsla(36, 4%, 47%, 1);
+    --dark-slate-gray: hsla(159, 17%, 20%, 1);
+    --platinum-2: hsla(200, 5%, 87%, 1);
+    --brunswick-green: hsla(174, 63%, 18%, 1);
+    --brunswick-green-2: hsla(171, 88%, 13%, 1);
+
+    /* --------------------------------------------------- */
+
+    /* CSS HEX */
+    --dark-green: #132C28ff;
+    --brunswick-green: #114B45ff;
+    --dark-green-2: #04312Bff;
+    --antiflash-white: #EAECEEff;
+    --platinum: #DDDFE0ff;
+    --dark-slate-gray: #2A3B35ff;
+
+    /* CSS HSL */
+    --dark-green: hsla(170, 40%, 12%, 1);
+    --brunswick-green: hsla(174, 63%, 18%, 1);
+    --dark-green-2: hsla(172, 85%, 10%, 1);
+    --antiflash-white: hsla(210, 11%, 93%, 1);
+    --platinum: hsla(200, 5%, 87%, 1);
+    --dark-slate-gray: hsla(159, 17%, 20%, 1);
+
+    /* --------------------------------------------------- */
+
+    /* CSS HEX */
+    --timberwolf: #D4D6D7ff;
+    --platinum: #E4E5E7ff;
+    --platinum-2: #DDDFE0ff;
+    --brunswick-green: #043E35ff;
+    --eerie-black: #202621ff;
+    --dark-green: #04312Bff;
+
+    /* CSS HSL */
+    --timberwolf: hsla(200, 4%, 84%, 1);
+    --platinum: hsla(220, 6%, 90%, 1);
+    --platinum-2: hsla(200, 5%, 87%, 1);
+    --brunswick-green: hsla(171, 88%, 13%, 1);
+    --eerie-black: hsla(130, 9%, 14%, 1);
+    --dark-green: hsla(172, 85%, 10%, 1);
+}
