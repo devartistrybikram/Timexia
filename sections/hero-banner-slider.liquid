@@ -21,7 +21,7 @@
   {% for block in section.blocks %}
     <div class="item">
       {% if block.settings.image %}
-        <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title | escape }}" />
+        <img src="{{ block.settings.image | image_url: width: 3240 }}" alt="{{ block.settings.title | escape }}" />
       {% endif %}
       <div class="carousel-content">
         {% if block.settings.title %}
@@ -38,9 +38,9 @@
   {% endfor %}
 </div>
 
-{% javascript %}
+<script>
   $(document).ready(function(){
-    $('.owl-carousel').owlCarousel({
+    $('.owl-home').owlCarousel({
       loop: {{ section.settings.loop }},
       margin: 10,
       nav: {{ section.settings.nav }},
@@ -49,7 +49,7 @@
       autoplayTimeout: {{ section.settings.autoplay_time }},
     });
   });
-{% endjavascript %}
+</script>
 
 {% schema %}
 {
