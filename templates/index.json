@@ -86,10 +86,6 @@
         "padding_bottom": 0
       }
     },
-    "hero_banner_slider_eAE83X": {
-      "type": "hero-banner-slider",
-      "settings": {}
-    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -228,7 +224,6 @@
   "order": [
     "image_banner",
     "rich_text",
-    "hero_banner_slider_eAE83X",
     "featured_collection",
     "collage",
     "video",
