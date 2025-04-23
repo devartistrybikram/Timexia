@@ -4,7 +4,7 @@
   {% for block in section.blocks %}
     <div class="item">
       {% if block.settings.image %}
-        <img src="{{ block.settings.image | image_url: width: 3240 }}" alt="{{ block.settings.title | escape }}" />
+        <img src="{{ block.settings.image | image_url: width: 3240 }}" width="3240" height="840" alt="{{ block.settings.title | escape }}" />
       {% endif %}
       <div class="carousel-content">
         {% if block.settings.title %}
