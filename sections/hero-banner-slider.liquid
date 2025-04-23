@@ -1,1 +1,52 @@
-<h1>Hello</h1>
+{% schema %}
+{
+  "name": "Hero Slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Hero Slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="hero-slider">
+  {% for block in section.blocks %}
+    <div class="slide">
+      <img src="{{ block.settings.image | img_url: '1600x' }}" alt="">
+      <h2>{{ block.settings.heading }}</h2>
+      <p>{{ block.settings.subheading }}</p>
+      <a href="{{ block.settings.link }}">Shop Now</a>
+    </div>
+  {% endfor %}
+</div>
