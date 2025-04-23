@@ -28,7 +28,13 @@
 
     {% render 'meta-tags' %}
 
-    <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
+    <!-- Custom JS Library -->
+    <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+    <script src="{{ 'bootstrap.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'aos.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'owl.carousel.min.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'scroller.min.js' | asset_url }}" defer="defer"></script>
+
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
