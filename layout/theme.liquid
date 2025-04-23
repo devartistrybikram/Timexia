@@ -28,6 +28,9 @@
 
     {% render 'meta-tags' %}
 
+    <!-- Custom CSS Library -->
+    {{ 'all.min.css' | asset_url | stylesheet_tag }}
+    
     <!-- Custom JS Library -->
     <script src="{{ 'jquery.min.js' | asset_url }}" async="async"></script>
     <script src="{{ 'bootstrap.min.js' | asset_url }}" defer="defer"></script>
