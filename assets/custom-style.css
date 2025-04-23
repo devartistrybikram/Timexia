@@ -192,3 +192,8 @@ svg {
 	}
 }
 
+.hero-banner {
+  img {
+    height: 540px;
+  }
+}
