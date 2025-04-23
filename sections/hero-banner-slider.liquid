@@ -24,7 +24,7 @@
 <script>
   $(document).ready(function(){
     $('.owl-home').owlCarousel({
-      item: 1,
+      item: {{ section.settings.item }},
       loop: {{ section.settings.loop }},
       margin: {{ section.settings.margin }},
       nav: {{ section.settings.nav }},
@@ -44,6 +44,12 @@
       "id": "autoplay",
       "label": "Autoplay",
       "default": true
+    },
+    {
+      "type": "number",
+      "id": "item",
+      "label": "Item Number",
+      "default": 1
     },
     {
       "type": "number",
