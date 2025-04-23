@@ -24,8 +24,9 @@
 <script>
   $(document).ready(function(){
     $('.owl-home').owlCarousel({
+      item: 1,
       loop: {{ section.settings.loop }},
-      margin: 10,
+      margin: {{ section.settings.margin }},
       nav: {{ section.settings.nav }},
       dots: {{ section.settings.dots }},
       autoplay: {{ section.settings.autoplay }},
@@ -49,6 +50,12 @@
       "id": "autoplay_time",
       "label": "Autoplay Time (ms)",
       "default": 3000
+    },
+    {
+      "type": "number",
+      "id": "margin",
+      "label": "Item Margin",
+      "default": 0
     },
     {
       "type": "checkbox",
