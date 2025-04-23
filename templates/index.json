@@ -28,10 +28,12 @@
       ],
       "settings": {
         "autoplay": true,
+        "item": 1,
         "autoplay_time": 3000,
+        "margin": 0,
         "loop": true,
-        "dots": false,
-        "nav": false
+        "dots": true,
+        "nav": true
       }
     }
   },
