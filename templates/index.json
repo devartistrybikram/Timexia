@@ -9,6 +9,10 @@
  */
 {
   "sections": {
+    "hero_banner_slider_kBBBVY": {
+      "type": "hero-banner-slider",
+      "settings": {}
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -222,6 +226,7 @@
     }
   },
   "order": [
+    "hero_banner_slider_kBBBVY",
     "image_banner",
     "rich_text",
     "featured_collection",
