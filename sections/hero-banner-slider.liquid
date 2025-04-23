@@ -1,31 +1,140 @@
+{% stylesheet %}
+  .owl-carousel .item {
+    text-align: center;
+    padding: 15px;
+  }
+  .carousel-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .carousel-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+  }
+{% endstylesheet %}
 
-<div class="owl-carousel owl-theme">
-    <div class="item"><h4>1</h4></div>
-    <div class="item"><h4>2</h4></div>
-    <div class="item"><h4>3</h4></div>
-    <div class="item"><h4>4</h4></div>
-    <div class="item"><h4>5</h4></div>
+<div class="owl-carousel owl-theme owl-home">
+  {% for block in section.blocks %}
+    <div class="item">
+      {% if block.settings.image %}
+        <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title | escape }}" />
+      {% endif %}
+      <div class="carousel-content">
+        {% if block.settings.title %}
+          <h4>{{ block.settings.title }}</h4>
+        {% endif %}
+        {% if block.settings.paragraph %}
+          <p>{{ block.settings.paragraph }}</p>
+        {% endif %}
+        {% if block.settings.button_text and block.settings.button_link %}
+          <a class="carousel-button" href="{{ block.settings.button_link }}">{{ block.settings.button_text }}</a>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
 </div>
 
-<script>
-$(document).ready(function(){
+{% javascript %}
+  $(document).ready(function(){
     $('.owl-carousel').owlCarousel({
-      loop:true,
-      margin:10,
-      nav:false,
-      dots:false
+      loop: {{ section.settings.loop }},
+      margin: 10,
+      nav: {{ section.settings.nav }},
+      dots: {{ section.settings.dots }},
+      autoplay: {{ section.settings.autoplay }},
+      autoplayTimeout: {{ section.settings.autoplay_time }},
+    });
   });
-});
-</script>
+{% endjavascript %}
 
 {% schema %}
 {
-  "name": "Hero Slider",
-  "settings": [],
+  "name": "Owl Carousel",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "number",
+      "id": "autoplay_time",
+      "label": "Autoplay Time (ms)",
+      "default": 3000
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Show Dots",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "nav",
+      "label": "Show Navigation Arrows",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "paragraph",
+          "label": "Paragraph"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
   "presets": [
     {
-      "name": "Hero Slider",
-      "category": "Custom"
+      "name": "Owl Carousel",
+      "category": "Slideshow",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Welcome to our shop",
+            "paragraph": "Check out our featured items!",
+            "button_text": "Shop Now",
+            "button_link": "/collections/all"
+          }
+        }
+      ]
     }
   ]
 }
