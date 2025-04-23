@@ -6,7 +6,7 @@
       {% if block.settings.image %}
         <img src="{{ block.settings.image | image_url: width: 3240 }}" width="3240" height="840" alt="{{ block.settings.title | escape }}" />
       {% endif %}
-      <div class="carousel-content position-absolute border">
+      <div class="carousel-content position-absolute border bg-danger">
         {% if block.settings.title %}
           <h4>{{ block.settings.title }}</h4>
         {% endif %}
