@@ -201,7 +201,7 @@ header :is(.header__menu-item:not(.mega-menu .header__menu-item), .mega-menu) {
     bottom: 0;
     height: 2px;
     width: 0;
-    background: red;
+    background: rgba(18,18,18, 1);
     transition: 300ms ease-in-out;
   }
   &:hover::after {
