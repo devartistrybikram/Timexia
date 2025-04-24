@@ -192,6 +192,21 @@ svg {
 	}
 }
 
+header a {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    height: 2px;
+    width: 100%;
+    background: red;
+  }
+}
+
+
+
 .hero-banner {
   img {
     height: 540px;
