@@ -201,7 +201,7 @@ header :is(.header__menu-item, .mega-menu) {
     transform: transformX(-50%);
     bottom: 0;
     height: 2px;
-    width: 90%;
+    width: 100%;
     background: red;
   }
 
