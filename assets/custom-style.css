@@ -197,7 +197,7 @@ svg {
     height: 540px;
   }
   .carousel-content {
-    left: 50% 0 0 50%;
+    left: 50% auto auto 50%;
     transform: translate(-50%, -50%);
     * {
       color: #fff;
