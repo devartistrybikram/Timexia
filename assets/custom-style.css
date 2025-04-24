@@ -211,7 +211,7 @@ header :is(.header__menu-item, .mega-menu) {
 }
 header .mega-menu {
   &:hover::after {
-    background: 98%;
+    width: 98%;
   }
 }
 
