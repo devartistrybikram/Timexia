@@ -193,7 +193,6 @@ svg {
 }
 
 header :is(.header__menu-item:not(.mega-menu .header__menu-item), .mega-menu) {
-  border: 1px solid blue;
   position: relative;
   &::after {
     content: '';
@@ -206,20 +205,10 @@ header :is(.header__menu-item:not(.mega-menu .header__menu-item), .mega-menu) {
     transition: 300ms ease-in-out;
   }
   &:hover::after {
-      width: 98%;
-    }
-  }
-}
-header {
-  .mega-menu {
-    
-  .header__menu-item {
-    &:hover::after {
       width: 95%;
     }
   }
-} 
-
+}
 
 
 
