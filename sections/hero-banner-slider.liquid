@@ -4,19 +4,11 @@
   <div class="owl-carousel owl-theme owl-home">
     {% for block in section.blocks %}
       <div class="item position-relative">
-        {% if block.settings.image %}
-          <img src="{{ block.settings.image | image_url: width: 3240 }}" width="3240" height="840" alt="{{ block.settings.title | escape }}" />
-        {% endif %}
-        <div class="carousel-content position-absolute border bg-danger">
-          {% if block.settings.title %}
-            <h4>{{ block.settings.title }}</h4>
-          {% endif %}
-          {% if block.settings.paragraph %}
-            <p>{{ block.settings.paragraph }}</p>
-          {% endif %}
-          {% if block.settings.button_text and block.settings.button_link %}
-            <a class="carousel-button" href="{{ block.settings.button_link }}">{{ block.settings.button_text }}</a>
-          {% endif %}
+        {% if block.settings.image %}<img src="{{ block.settings.image | image_url: width: 3240 }}" width="3240" height="840" alt="{{ block.settings.title | escape }}" />{% endif %}
+        <div class="carousel-content position-absolute border text-white">
+          {% if block.settings.title %}<h4>{{ block.settings.title }}</h4>{% endif %}
+          {% if block.settings.paragraph %}<p>{{ block.settings.paragraph }}</p>{% endif %}
+          {% if block.settings.button_text and block.settings.button_link %}<a class="carousel-button" href="{{ block.settings.button_link }}">{{ block.settings.button_text }}</a>{% endif %}
         </div>
       </div>
     {% endfor %}
