@@ -37,11 +37,24 @@
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "menu_image_HYJGrn": {
+          "type": "menu-image",
+          "settings": {
+            "link_name": "Other",
+            "link_image": "shopify://shop_images/mans-hands-lean-on-ledge.jpg",
+            "link_title": "Other",
+            "link_url": "shopify://collections"
+          }
+        }
+      },
+      "block_order": [
+        "menu_image_HYJGrn"
+      ],
       "settings": {
         "logo_position": "middle-left",
-        "mobile_logo_position": "center",
         "menu": "main-menu",
-        "menu_type_desktop": "dropdown",
+        "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": false,
         "color_scheme": "scheme-1",
@@ -49,6 +62,7 @@
         "enable_country_selector": true,
         "enable_language_selector": true,
         "enable_customer_avatar": true,
+        "mobile_logo_position": "center",
         "margin_bottom": 0,
         "padding_top": 20,
         "padding_bottom": 20
