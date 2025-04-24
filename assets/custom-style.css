@@ -198,13 +198,14 @@ header :is(.header__menu-item, .mega-menu) {
     content: '';
     position: absolute;
     left: 50%;
-    transform: transformX(-50%);
     bottom: 0;
     height: 2px;
-    width: 100%;
+    width: 0;
     background: red;
   }
-
+  &:hover::after {
+    width: 90%;
+  }
 }
 header .mega-menu {
   &::after {
