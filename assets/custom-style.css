@@ -200,7 +200,7 @@ header :is(.header__menu-item, .mega-menu) {
     left: 0;
     bottom: -5px;
     height: 2px;
-    width: 98%;
+    width: 96%;
     background: red;
   }
 
