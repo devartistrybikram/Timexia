@@ -65,8 +65,8 @@
         "autoplay_time": 3000,
         "margin": 0,
         "loop": true,
-        "dots": true,
-        "nav": true
+        "dots": false,
+        "nav": false
       }
     }
   },
