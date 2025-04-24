@@ -205,18 +205,19 @@ header :is(.header__menu-item:not(.mega-menu .header__menu-item), .mega-menu) {
     background: red;
     transition: 300ms ease-in-out;
   }
+  &:hover::after {
+      width: 98%;
+    }
+  }
 }
 header {
-.mega-menu {
-  &:hover::after {
-    width: 98%;
+  .mega-menu {
+    
+  .header__menu-item {
+    &:hover::after {
+      width: 95%;
+    }
   }
-}
-.header__menu-item {
-  &:hover::after {
-    width: 95%;
-  }
-}
 } 
 
 
