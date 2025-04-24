@@ -205,7 +205,7 @@ header :is(.header__menu-item, .mega-menu) {
   }
 
 }
-.mega-menu {
+header .mega-menu {
   &::after {
     background: green;
   }
