@@ -193,6 +193,7 @@ svg {
 }
 
 header :is(.header__menu-item, .mega-menu) {
+  border: 1px solid blue;
   position: relative;
   &::after {
     content: '';
