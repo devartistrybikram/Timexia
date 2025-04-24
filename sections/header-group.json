@@ -38,15 +38,6 @@
     "header": {
       "type": "header",
       "blocks": {
-        "menu_image_HYJGrn": {
-          "type": "menu-image",
-          "settings": {
-            "link_name": "Collections",
-            "link_image": "shopify://shop_images/mans-hands-lean-on-ledge.jpg",
-            "link_title": "",
-            "link_url": "shopify://collections"
-          }
-        },
         "menu_image_hqTV7p": {
           "type": "menu-image",
           "settings": {
@@ -67,7 +58,6 @@
         }
       },
       "block_order": [
-        "menu_image_HYJGrn",
         "menu_image_hqTV7p",
         "menu_image_fABBiQ"
       ],
