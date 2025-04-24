@@ -2874,7 +2874,7 @@ details[open] > .header__menu-item .icon-caret {
 .header__menu-item .icon-caret {
   right: 0.8rem;
   width: 1rem;
-  min-height: 1rem;
+  min-height: .6rem;
 }
 
 .header__submenu .icon-caret {
