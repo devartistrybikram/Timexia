@@ -60,7 +60,7 @@
         "slide_pUp7Eb"
       ],
       "settings": {
-        "autoplay": true,
+        "autoplay": false,
         "item": 1,
         "autoplay_time": 3000,
         "margin": 0,
