@@ -16,7 +16,37 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/home-slider-02.webp",
-            "title": "The Vincero <br> Happiest Hours",
+            "title": "The Vincero  Happiest Hours",
+            "paragraph": "We’re celebrating feel-good moments with pieces to enjoy whatever it is that you enjoy.",
+            "button_text": "Learn More",
+            "button_link": "shopify://collections"
+          }
+        },
+        "slide_6jaVqR": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/home-slider-02.webp",
+            "title": "The Vincero  Happiest Hours",
+            "paragraph": "We’re celebrating feel-good moments with pieces to enjoy whatever it is that you enjoy.",
+            "button_text": "Learn More",
+            "button_link": "shopify://collections"
+          }
+        },
+        "slide_kYdRW6": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/home-slider-02.webp",
+            "title": "The Vincero  Happiest Hours",
+            "paragraph": "We’re celebrating feel-good moments with pieces to enjoy whatever it is that you enjoy.",
+            "button_text": "Learn More",
+            "button_link": "shopify://collections"
+          }
+        },
+        "slide_pUp7Eb": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/home-slider-02.webp",
+            "title": "The Vincero  Happiest Hours",
             "paragraph": "We’re celebrating feel-good moments with pieces to enjoy whatever it is that you enjoy.",
             "button_text": "Learn More",
             "button_link": "shopify://collections"
@@ -24,7 +54,10 @@
         }
       },
       "block_order": [
-        "slide_x7aRjV"
+        "slide_x7aRjV",
+        "slide_6jaVqR",
+        "slide_kYdRW6",
+        "slide_pUp7Eb"
       ],
       "settings": {
         "autoplay": true,
