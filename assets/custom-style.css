@@ -197,7 +197,8 @@ header :is(.header__menu-item, .mega-menu) {
   &::after {
     content: '';
     position: absolute;
-    left: 0;
+    left: 50%;
+    transform: transformX(-50%);
     bottom: 0;
     height: 2px;
     width: 90%;
