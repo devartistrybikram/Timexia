@@ -196,4 +196,8 @@ svg {
   img {
     height: 540px;
   }
+  .carousel-content {
+    top: 50%;
+    transform: translate(-50%, 0);
+  }
 }
