@@ -43,7 +43,7 @@
           "settings": {
             "link_name": "Collections",
             "link_image": "shopify://shop_images/mans-hands-lean-on-ledge.jpg",
-            "link_title": "Other",
+            "link_title": "",
             "link_url": "shopify://collections"
           }
         }
