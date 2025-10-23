@@ -1,0 +1,130 @@
+
+
+<div class="hero-banner">
+  <div class="owl-carousel owl-theme owl-home">
+    {% for block in section.blocks %}
+      <div class="item position-relative">
+        {% if block.settings.image %}<img src="{{ block.settings.image | image_url: width: 3240 }}" width="3240" height="840" alt="{{ block.settings.title | escape }}" />{% endif %}
+        <div class="container carousel-content position-absolute">
+          {% if block.settings.title %}<h4>{{ block.settings.title }}</h4>{% endif %}
+          {% if block.settings.paragraph %}<p>{{ block.settings.paragraph }}</p>{% endif %}
+          {% if block.settings.button_text and block.settings.button_link %}<a class="carousel-button" href="{{ block.settings.button_link }}">{{ block.settings.button_text }}</a>{% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  
+  <script>
+    $(document).ready(function(){
+      $('.owl-home').owlCarousel({
+        items: {{ section.settings.item }},
+        loop: {{ section.settings.loop }},
+        margin: {{ section.settings.margin }},
+        nav: {{ section.settings.nav }},
+        dots: {{ section.settings.dots }},
+        autoplay: {{ section.settings.autoplay }},
+        autoplayTimeout: {{ section.settings.autoplay_time }},
+      });
+    });
+  </script>
+</div>
+{% schema %}
+{
+  "name": "Home Banner Slide",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "number",
+      "id": "item",
+      "label": "Item Number",
+      "default": 1
+    },
+    {
+      "type": "number",
+      "id": "autoplay_time",
+      "label": "Autoplay Time (ms)",
+      "default": 3000
+    },
+    {
+      "type": "number",
+      "id": "margin",
+      "label": "Item Margin",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Show Dots",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "nav",
+      "label": "Show Navigation Arrows",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "paragraph",
+          "label": "Paragraph"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Home Banner Slide",
+      "category": "Slideshow",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Welcome to our shop",
+            "paragraph": "Check out our featured items!",
+            "button_text": "Shop Now",
+            "button_link": "/collections/all"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

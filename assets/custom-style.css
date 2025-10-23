@@ -1,0 +1,226 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	border: none;
+	text-decoration: none !important;
+	list-style: none;
+	outline: none;
+	font: normal 16px/24px LexendRegular, 'Sans-serif';
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	resize: none !important;
+}
+
+body {
+	overflow-x: hidden;
+    background-color: #f2f2f2;
+}
+
+#mainContent {
+	max-width: 1920px;
+	margin: 0 auto;
+	padding: 0;
+    width: 100%;
+    background-color: #fff;
+}
+
+/* =================================== */
+/* ===== Reset Bootstrap Default ===== */
+/* =================================== */
+
+a {
+	color: #1a1a1a;
+}
+
+section {
+	scroll-snap-align: start;
+	scroll-padding-top: 250px;
+	scroll-margin-top: 155px;
+}
+
+input,
+textarea,
+select {
+	width: 100%;
+	border-color: #ddd !important;
+	transition: 300ms ease-in;
+
+	&:focus {
+		border-color: red !important;
+	}
+}
+
+input[type="checkbox"] {
+	scale: 1.2;
+}
+
+select {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	&:invalid {
+		color: gray;
+	}
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+button {
+	&:focus {
+		outline: none !important;
+		box-shadow: none !important;
+	}
+}
+
+:is(ul, ol):not(:is(header, footer) :is(ul, ol)) {
+	padding: 0 !important;
+	margin: 0 !important;
+	li {
+		margin-bottom: 5px;
+	}
+}
+
+img,
+video,
+svg {
+	max-width: 100%;
+	min-height: 100%;
+	object-fit: cover;
+}
+
+.form-control:focus {
+	color: var(--bs-body-color);
+	background-color: var(--bs-body-bg);
+	border-color: #86b7fe;
+	outline: 0;
+	box-shadow: none !important;
+}
+
+.form-check-input {
+	&:focus {
+		box-shadow: none !important;
+		border-color: #003366 !important;
+	}
+
+	&:hover {
+		border-color: #003366 !important;
+	}
+
+	&:checked {
+		border-color: #003366 !important;
+		background-color: #003366 !important;
+	}
+}
+
+.btn.btn-primary {
+	background: rgb(25, 0, 60) !important;
+	background: linear-gradient(45deg, rgba(25, 0, 60, 1) 0%, rgba(5, 81, 133, 1) 100%) !important;
+	border-color: transparent !important;
+	color: #fff !important;
+	position: relative;
+	overflow: hidden;
+	padding: 12px 20px;
+	min-width: 150px !important;
+	outline: 1px solid transparent !important;
+	outline-offset: -5px;
+	transition: outline 300ms ease-in;
+
+	&:hover {
+		outline: 1px solid #fff !important;
+		background: #1a1a1a !important;
+		border-radius: 0 !important;
+	}
+
+	&:focus {
+		outline: 1px solid #fff !important;
+		background: #1a1a1a !important;
+		border-radius: 0 !important;
+	}
+}
+
+.btn.btn-secondary {
+	background: rgb(25, 0, 60) !important;
+	background: linear-gradient(45deg, rgba(25, 0, 60, 1) 0%, rgba(5, 81, 133, 1) 100%) !important;
+	border-color: transparent !important;
+	color: #fff !important;
+	position: relative;
+	overflow: hidden;
+	padding: 12px 20px;
+	min-width: 150px !important;
+	outline: 1px solid transparent !important;
+	outline-offset: -5px;
+	transition: outline 300ms ease-in;
+
+	&:hover {
+		outline: 1px solid #fff !important;
+		background: #1a1a1a !important;
+		border-radius: 0 !important;
+	}
+
+	&:focus {
+		outline: 1px solid #fff !important;
+		background: #1a1a1a !important;
+		border-radius: 0 !important;
+	}
+}
+
+.btn.btn-primary.link,
+.btn.btn-secondary.link {
+	span {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		&::after {
+			content: '\f062';
+			font-family: "Font Awesome 5 Free";
+			font-size: 16px;
+			font-weight: bold;
+			rotate: 45deg;
+			display: none;
+			transition: 300ms ease-in;
+		}
+	}
+
+	&:hover {
+		span::after {
+			display: block;
+		}
+	}
+}
+
+header :is(.header__menu-item) {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: rgba(18,18,18, 1);
+    transition: 300ms ease-in-out;
+  }
+  &:hover::after {
+    width: 95%;
+  }
+}
+
+
+
+.hero-banner {
+  img {
+    height: 540px;
+  }
+  .carousel-content {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    * {
+      color: #fff;
+    }
+  }
+}
