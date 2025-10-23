@@ -1,32 +1,38 @@
-
-
 <div class="hero-banner">
-  <div class="owl-carousel owl-theme owl-home">
+<div
+  class="owl-carousel owl-theme owl-home"
+  data-items="{{ section.settings.item_de }}"
+  data-loop="{{ section.settings.loop }}"
+  data-margin="{{ section.settings.margin }}"
+  data-autoplay="{{ section.settings.autoplay }}"
+  data-autoplay-timeout="{{ section.settings.autoplay_time }}"
+  data-nav="{{ section.settings.nav }}"
+  data-destroy="{% if section.settings.sm %}sm,{% endif %} {% if section.settings.md %}md,{% endif %} {% if section.settings.lg %}lg,{% endif %} {% if section.settings.xl %}xl,{% endif %} {% if section.settings.xxl %}xxl{% endif %}"
+  data-responsive='{"0":{"items":{{ section.settings.item_sm }}}, "768":{"items":{{ section.settings.item_md }}}, "992":{"items":{{ section.settings.item_lg }}}, "1280":{"items":{{ section.settings.item_xl }}}, "1440":{"items":{{ section.settings.item_xxl }}}}'
+>
     {% for block in section.blocks %}
       <div class="item position-relative">
-        {% if block.settings.image %}<img src="{{ block.settings.image | image_url: width: 3240 }}" width="3240" height="840" alt="{{ block.settings.title | escape }}" />{% endif %}
+        {% if block.settings.image -%}
+          {{
+            block.settings.image
+            | image_url: width: 3240
+            | image_tag: alt: block.settings.title, width: 3240, height: 2600, loading: 'lazy'
+          }}
+        {%- endif %}
         <div class="container carousel-content position-absolute">
-          {% if block.settings.title %}<h4>{{ block.settings.title }}</h4>{% endif %}
-          {% if block.settings.paragraph %}<p>{{ block.settings.paragraph }}</p>{% endif %}
-          {% if block.settings.button_text and block.settings.button_link %}<a class="carousel-button" href="{{ block.settings.button_link }}">{{ block.settings.button_text }}</a>{% endif %}
+          {% if block.settings.title %}
+            <h4>{{ block.settings.title }}</h4>
+          {% endif %}
+          {% if block.settings.paragraph %}
+            <p>{{ block.settings.paragraph }}</p>
+          {% endif %}
+          {% if block.settings.button_text and block.settings.button_link -%}
+            <a class="carousel-button" href="{{ block.settings.button_link }}">{{ block.settings.button_text }}</a>
+          {%- endif %}
         </div>
       </div>
     {% endfor %}
   </div>
-  
-  <script>
-    $(document).ready(function(){
-      $('.owl-home').owlCarousel({
-        items: {{ section.settings.item }},
-        loop: {{ section.settings.loop }},
-        margin: {{ section.settings.margin }},
-        nav: {{ section.settings.nav }},
-        dots: {{ section.settings.dots }},
-        autoplay: {{ section.settings.autoplay }},
-        autoplayTimeout: {{ section.settings.autoplay_time }},
-      });
-    });
-  </script>
 </div>
 {% schema %}
 {
@@ -36,42 +42,119 @@
       "type": "checkbox",
       "id": "autoplay",
       "label": "Autoplay",
-      "default": true
-    },
-    {
-      "type": "number",
-      "id": "item",
-      "label": "Item Number",
-      "default": 1
-    },
-    {
-      "type": "number",
-      "id": "autoplay_time",
-      "label": "Autoplay Time (ms)",
-      "default": 3000
-    },
-    {
-      "type": "number",
-      "id": "margin",
-      "label": "Item Margin",
-      "default": 0
+      "default": true,
+      "info": "Enable autoplay for carousel"
     },
     {
       "type": "checkbox",
       "id": "loop",
       "label": "Loop",
-      "default": true
+      "default": true,
+      "info": "Enable loop for the carousel"
+    },
+    {
+      "type": "number",
+      "id": "autoplay_time",
+      "label": "Autoplay Time (ms)",
+      "default": 3000,
+      "info": "Set time for for carousel"
+    },
+    {
+      "type": "number",
+      "id": "item_de",
+      "label": "Item Number",
+      "default": 1,
+      "info": "Defualt item number"
+    },
+    {
+      "type": "number",
+      "id": "item_sm",
+      "label": "Item Number",
+      "default": 1,
+      "info": "Items on small screen e.g. mobile"
+    },
+    {
+      "type": "number",
+      "id": "item_md",
+      "label": "Item Number",
+      "default": 1,
+      "info": "Items on medium screen e.g. tablet"
+    },
+    {
+      "type": "number",
+      "id": "item_lg",
+      "label": "Item Number",
+      "default": 1,
+      "info": "Items on large screen e.g. laptop"
+    },
+    {
+      "type": "number",
+      "id": "item_xl",
+      "label": "Item Number",
+      "default": 1,
+      "info": "Items on x large screen e.g. desktop"
+    },
+    {
+      "type": "number",
+      "id": "item_xxl",
+      "label": "Item Number",
+      "default": 1,
+      "info": "Items on xxl large screen e.g. large desktop"
+    },
+
+    {
+      "type": "number",
+      "id": "margin",
+      "label": "Item Margin",
+      "default": 0,
+      "info": "Margin between two items"
     },
     {
       "type": "checkbox",
       "id": "dots",
-      "label": "Show Dots",
-      "default": false
+      "label": "Navigation Dots",
+      "default": false,
+      "info": "Show default navigation dots"
     },
     {
       "type": "checkbox",
       "id": "nav",
-      "label": "Show Navigation Arrows",
+      "label": "Navigation Arrows",
+      "default": false,
+      "info": "Show default navigation arrows"
+    },
+    {
+      "type": "header",
+      "content": "Destroy Carousel on Breakpoints"
+    },
+    {
+      "type": "checkbox",
+      "id": "sm",
+      "label": "Small (sm)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "md",
+      "label": "Medium (md)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "lg",
+      "label": "Large (lg)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "xl",
+      "label": "Extra Large (xl)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "xxl",
+      "label": "Extra Extra Large (xxl)",
       "default": false
     }
   ],
