@@ -1,15 +1,18 @@
 <div class="hero-banner">
-<div
-  class="owl-carousel owl-theme owl-home"
-  data-items="{{ section.settings.item_de }}"
-  data-loop="{{ section.settings.loop }}"
-  data-margin="{{ section.settings.margin }}"
-  data-autoplay="{{ section.settings.autoplay }}"
-  data-autoplay-timeout="{{ section.settings.autoplay_time }}"
-  data-nav="{{ section.settings.nav }}"
-  data-destroy="{% if section.settings.sm %}sm,{% endif %} {% if section.settings.md %}md,{% endif %} {% if section.settings.lg %}lg,{% endif %} {% if section.settings.xl %}xl,{% endif %} {% if section.settings.xxl %}xxl{% endif %}"
-  data-responsive='{"0":{"items":{{ section.settings.item_sm }}}, "768":{"items":{{ section.settings.item_md }}}, "992":{"items":{{ section.settings.item_lg }}}, "1280":{"items":{{ section.settings.item_xl }}}, "1440":{"items":{{ section.settings.item_xxl }}}}'
->
+  <div
+    class="owl-carousel owl-theme owl-home"
+    data-items="{{ section.settings.item_de }}"
+    data-loop="{{ section.settings.loop }}"
+    data-margin="{{ section.settings.margin }}"
+    data-autoplay="{{ section.settings.autoplay }}"
+    data-autoplay-timeout="{{ section.settings.autoplay_time }}"
+    data-nav="{{ section.settings.nav }}"
+    data-dots="{{ section.settings.dots }}"
+    data-center="{{ section.settings.center }}"
+    data-slideby="{{ section.settings.item_sd }}"
+    data-destroy="{% if section.settings.sm %}sm, {% endif %}{% if section.settings.md %}md, {% endif %}{% if section.settings.lg %}lg, {% endif %}{% if section.settings.xl %}xl, {% endif %}{% if section.settings.xxl %}xxl{% endif %}"
+    data-responsive='{"0":{"items":{{ section.settings.item_sm }}}, "768":{"items":{{ section.settings.item_md }}}, "992":{"items":{{ section.settings.item_lg }}}, "1280":{"items":{{ section.settings.item_xl }}}, "1440":{"items":{{ section.settings.item_xxl }}}}'
+  >
     {% for block in section.blocks %}
       <div class="item position-relative">
         {% if block.settings.image -%}
@@ -26,7 +29,7 @@
           {% if block.settings.paragraph %}
             <p>{{ block.settings.paragraph }}</p>
           {% endif %}
-          {% if block.settings.button_text and block.settings.button_link -%}
+          {% if block.settings.button_link -%}
             <a class="carousel-button" href="{{ block.settings.button_link }}">{{ block.settings.button_text }}</a>
           {%- endif %}
         </div>
@@ -36,8 +39,40 @@
 </div>
 {% schema %}
 {
-  "name": "Home Banner Slide",
+  "name": "Slider Banner",
   "settings": [
+    {
+      "type": "header",
+      "content": "Carousel Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "dots",
+      "label": "Navigation Dots",
+      "default": false,
+      "info": "Show default navigation dots"
+    },
+    {
+      "type": "checkbox",
+      "id": "nav",
+      "label": "Navigation Arrows",
+      "default": false,
+      "info": "Show default navigation arrows"
+    },
+	{
+	  "type": "checkbox",
+	  "id": "loop",
+	  "label": "Loop",
+	  "default": true,
+	  "info": "Enable loop for the carousel"
+	},
+	{
+	  "type": "checkbox",
+	  "id": "center",
+	  "label": "Center",
+	  "default": true,
+	  "info": "Enable Center for the carousel"
+	},
     {
       "type": "checkbox",
       "id": "autoplay",
@@ -46,18 +81,29 @@
       "info": "Enable autoplay for carousel"
     },
     {
-      "type": "checkbox",
-      "id": "loop",
-      "label": "Loop",
-      "default": true,
-      "info": "Enable loop for the carousel"
-    },
-    {
       "type": "number",
       "id": "autoplay_time",
       "label": "Autoplay Time (ms)",
       "default": 3000,
-      "info": "Set time for for carousel"
+      "info": "Set time for for carousel",
+    },
+    {
+      "type": "number",
+      "id": "margin",
+      "label": "Item Margin",
+      "default": 0,
+      "info": "Margin between two items"
+    },
+	{
+		"type": "header",
+		"content": "Carousel Items Settings"
+	},
+    {
+      "type": "number",
+      "id": "item_sd",
+      "label": "Item SlideBy",
+      "default": 1,
+      "info": "Item slideBy"
     },
     {
       "type": "number",
@@ -100,28 +146,6 @@
       "label": "Item Number",
       "default": 1,
       "info": "Items on xxl large screen e.g. large desktop"
-    },
-
-    {
-      "type": "number",
-      "id": "margin",
-      "label": "Item Margin",
-      "default": 0,
-      "info": "Margin between two items"
-    },
-    {
-      "type": "checkbox",
-      "id": "dots",
-      "label": "Navigation Dots",
-      "default": false,
-      "info": "Show default navigation dots"
-    },
-    {
-      "type": "checkbox",
-      "id": "nav",
-      "label": "Navigation Arrows",
-      "default": false,
-      "info": "Show default navigation arrows"
     },
     {
       "type": "header",
@@ -194,7 +218,7 @@
   "max_blocks": 10,
   "presets": [
     {
-      "name": "Home Banner Slide",
+      "name": "Slider Banner",
       "category": "Slideshow",
       "blocks": [
         {
