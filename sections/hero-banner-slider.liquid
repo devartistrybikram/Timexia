@@ -14,7 +14,7 @@
     data-responsive='{"0":{"items":{{ section.settings.item_sm }}}, "768":{"items":{{ section.settings.item_md }}}, "992":{"items":{{ section.settings.item_lg }}}, "1280":{"items":{{ section.settings.item_xl }}}, "1440":{"items":{{ section.settings.item_xxl }}}}'
   >
     {% for block in section.blocks %}
-      <div class="item position-relative">
+      <div class="item position-relative z-1">
         {% if block.settings.image -%}
           {{
             block.settings.image
@@ -81,11 +81,14 @@
       "info": "Enable autoplay for carousel"
     },
     {
-      "type": "number",
+      "type": "range",
       "id": "autoplay_time",
       "label": "Autoplay Time (ms)",
       "default": 3000,
-      "info": "Set time for for carousel",
+      "min": 500,
+      "max": 9500,
+      "step": 500,
+      "info": "Set time for for carousel"
     },
     {
       "type": "number",

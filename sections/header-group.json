@@ -1,1 +1,77 @@
-{"name":"t:sections.header.name","type":"header","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"announcement-bar-0":{"type":"announcement","settings":{"text":"Welcome to our store","link":""}}},"block_order":["announcement-bar-0"],"settings":{"auto_rotate":false,"change_slides_speed":5,"color_scheme":"","show_line_separator":true,"show_social":false,"enable_country_selector":false,"enable_language_selector":false}},"header":{"type":"header","blocks":{"menu_image_hqTV7p":{"type":"menu-image","settings":{"link_name":"Collections","link_image":"shopify:\/\/shop_images\/modern-time-pieces.jpg","link_title":"","link_url":"shopify:\/\/collections"}},"menu_image_fABBiQ":{"type":"menu-image","settings":{"link_name":"Collections","link_image":"shopify:\/\/shop_images\/mans-hands-lean-on-ledge.jpg","link_title":"","link_url":"shopify:\/\/collections"}}},"block_order":["menu_image_hqTV7p","menu_image_fABBiQ"],"settings":{"logo_position":"middle-left","menu":"main-menu","menu_type_desktop":"mega","sticky_header_type":"on-scroll-up","show_line_separator":false,"color_scheme":"scheme-1","menu_color_scheme":"","enable_country_selector":true,"enable_language_selector":true,"enable_customer_avatar":true,"mobile_logo_position":"center","margin_bottom":0,"padding_top":20,"padding_bottom":20}}},"order":["announcement-bar","header"]}
+{
+    "name": "t:sections.header.name",
+    "type": "header",
+    "sections": {
+        "announcement-bar": {
+            "type": "announcement-bar",
+            "blocks": {
+                "announcement-bar-0": {
+                    "type": "announcement",
+                    "settings": {
+                        "text": "Welcome to our store",
+                        "link": ""
+                    }
+                }
+            },
+            "block_order": [
+                "announcement-bar-0"
+            ],
+            "settings": {
+                "auto_rotate": false,
+                "change_slides_speed": 5,
+                "color_scheme": "",
+                "show_line_separator": true,
+                "show_social": false,
+                "enable_country_selector": false,
+                "enable_language_selector": false
+            }
+        },
+        "header": {
+            "type": "header",
+            "blocks": {
+                "menu_image_hqTV7p": {
+                    "type": "menu-image",
+                    "settings": {
+                        "link_name": "Collections",
+                        "link_image": "shopify:\/\/shop_images\/modern-time-pieces.jpg",
+                        "link_title": "",
+                        "link_url": "shopify:\/\/collections"
+                    }
+                },
+                "menu_image_fABBiQ": {
+                    "type": "menu-image",
+                    "settings": {
+                        "link_name": "Collections",
+                        "link_image": "shopify:\/\/shop_images\/mans-hands-lean-on-ledge.jpg",
+                        "link_title": "",
+                        "link_url": "shopify:\/\/collections"
+                    }
+                }
+            },
+            "block_order": [
+                "menu_image_hqTV7p",
+                "menu_image_fABBiQ"
+            ],
+            "settings": {
+                "logo_position": "middle-left",
+                "menu": "main-menu",
+                "menu_type_desktop": "mega",
+                "sticky_header_type": "on-scroll-up",
+                "show_line_separator": false,
+                "color_scheme": "scheme-1",
+                "menu_color_scheme": "",
+                "enable_country_selector": true,
+                "enable_language_selector": true,
+                "enable_customer_avatar": true,
+                "mobile_logo_position": "center",
+                "margin_bottom": 0,
+                "padding_top": 20,
+                "padding_bottom": 20
+            }
+        }
+    },
+    "order": [
+        "announcement-bar",
+        "header"
+    ]
+}

@@ -7,7 +7,7 @@
 	text-decoration: none !important;
 	list-style: none;
 	outline: none;
-	font: normal 16px/24px LexendRegular, 'Sans-serif';
+	font: normal 16px/24px LexendRegular, "Sans-serif";
 	scrollbar-width: none;
 	-ms-overflow-style: none;
 	resize: none !important;
@@ -15,15 +15,15 @@
 
 body {
 	overflow-x: hidden;
-    background-color: #f2f2f2;
+	background-color: #f2f2f2;
 }
 
 #mainContent {
 	max-width: 1920px;
 	margin: 0 auto;
 	padding: 0;
-    width: 100%;
-    background-color: #fff;
+	width: 100%;
+	background-color: #fff;
 }
 
 /* =================================== */
@@ -59,6 +59,7 @@ input[type="checkbox"] {
 select {
 	-moz-appearance: none;
 	-webkit-appearance: none;
+
 	&:invalid {
 		color: gray;
 	}
@@ -78,6 +79,7 @@ button {
 :is(ul, ol):not(:is(header, footer) :is(ul, ol)) {
 	padding: 0 !important;
 	margin: 0 !important;
+
 	li {
 		margin-bottom: 5px;
 	}
@@ -117,7 +119,9 @@ svg {
 
 .btn.btn-primary {
 	background: rgb(25, 0, 60) !important;
-	background: linear-gradient(45deg, rgba(25, 0, 60, 1) 0%, rgba(5, 81, 133, 1) 100%) !important;
+	background: linear-gradient(45deg,
+			rgba(25, 0, 60, 1) 0%,
+			rgba(5, 81, 133, 1) 100%) !important;
 	border-color: transparent !important;
 	color: #fff !important;
 	position: relative;
@@ -143,7 +147,9 @@ svg {
 
 .btn.btn-secondary {
 	background: rgb(25, 0, 60) !important;
-	background: linear-gradient(45deg, rgba(25, 0, 60, 1) 0%, rgba(5, 81, 133, 1) 100%) !important;
+	background: linear-gradient(45deg,
+			rgba(25, 0, 60, 1) 0%,
+			rgba(5, 81, 133, 1) 100%) !important;
 	border-color: transparent !important;
 	color: #fff !important;
 	position: relative;
@@ -175,7 +181,7 @@ svg {
 		gap: 10px;
 
 		&::after {
-			content: '\f062';
+			content: "\f062";
 			font-family: "Font Awesome 5 Free";
 			font-size: 16px;
 			font-weight: bold;
@@ -192,35 +198,150 @@ svg {
 	}
 }
 
-header :is(.header__menu-item) {
-  position: relative;
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    width: 0;
-    background: rgba(18,18,18, 1);
-    transition: 300ms ease-in-out;
-  }
-  &:hover::after {
-    width: 95%;
-  }
+.hero-banner {
+	img {
+		height: 540px;
+	}
+
+	.carousel-content {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		* {
+			color: #fff;
+		}
+	}
 }
 
+#headerArea {
+	svg {
+		height: 24px;
+		width: 24px;
+		max-width: 24px;
+		aspect-ratio: 1;
+		path {
+			fill: #1a1a1a;
+		}
+	}
+}
 
+.has-child {
+	position: relative;
 
-.hero-banner {
-  img {
-    height: 540px;
-  }
-  .carousel-content {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    * {
-      color: #fff;
-    }
-  }
+	>a {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+
+		&::after {
+			content: "\f107";
+			font-family: "Font Awesome 5 Free";
+			font-weight: 700;
+			font-size: 14px;
+		}
+	}
+
+	li {
+		&:not(:last-child) {
+			border-bottom: 1px solid red;
+		}
+
+		a {
+			width: 100%;
+			white-space: nowrap;
+			display: inline-block;
+			padding: 10px 6px;
+		}
+	}
+
+	ul {
+		display: none;
+		min-width: 200px;
+		position: absolute;
+		inset: calc(100% + 32px) auto auto 0;
+		background: #fff;
+		padding: 4px 10px;
+		z-index: 3;
+		border-radius: 4px;
+		li.has-grand-child {
+			display: flex;
+			align-items: center;
+			gap: 5px;
+
+			&::after {
+				content: "\f107";
+				font-family: "Font Awesome 5 Free";
+				font-weight: 700;
+				font-size: 14px;
+			}
+		}
+
+		&::after {
+			content: " ";
+			position: absolute;
+			right: 85%;
+			top: -6px;
+			border-top: none;
+			border-right: 8px solid transparent;
+			border-left: 8px solid transparent;
+			border-bottom: 8px solid #fff;
+		}
+	}
+
+	&:focus-within {
+		ul {
+			display: block;
+		}
+	}
+
+	.has-grand-child {
+		position: relative;
+
+		ul {
+			display: none;
+			min-width: 200px;
+			position: absolute;
+			inset: 8px auto auto calc(100% + 24px);
+			background: #fff;
+			padding: 0 12px;
+			z-index: 3;
+			border-radius: 4px;
+			&::after {
+				content: " ";
+				position: absolute;
+				right: calc(100% - 1px);
+				top: 8px;
+				border-top: 8px solid transparent;
+				border-right: 8px solid #fff;
+				border-left: none;
+				border-bottom: 8px solid transparent;
+			}
+		}
+
+		&:focus-within {
+			ul {
+				display: block;
+			}
+		}
+	}
+}
+
+.searchbox-backdrop {	
+	z-index: 5;
+	position: fixed;
+	inset: 0;
+	padding: 16px;
+	background-color: rgba(0, 0, 0, 0.45);
+	.searchbox {
+		width: 100%;
+		padding: 24px;
+		max-width: 420px;
+		border-radius: 6px;
+		height: 100%;
+		margin-left: auto;
+		margin-right: 0;
+		background-color: #fff;
+		box-shadow: 0 0 16px -6px rgba(150, 180, 170, .5);
+	}
 }

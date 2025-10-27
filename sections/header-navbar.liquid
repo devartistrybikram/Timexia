@@ -1,0 +1,218 @@
+<header class="container-fluid py-3" id="headerArea">
+  <div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="logobox">
+        {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+        {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+        {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
+        {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{
+				settings.logo_width | times: 2 }}{% endcapture %}
+        {{
+          settings.logo
+          | image_url: width: 600
+          | image_tag:
+            class: 'header__heading-logo',
+            widths: widths,
+            height: logo_height,
+            width: settings.logo_width,
+            alt: logo_alt,
+            sizes: sizes,
+            preload: true
+        }}
+      </div>
+      <div class="menubar d-flex align-items-center gap-5">
+        <nav class="d-flex align-items-center">
+          <ul class="list-unstyled d-flex gap-4 mb-0">
+            {%- for link in section.settings.menu.links -%}
+              <li
+                {% if link.links != blank %}
+                  class="has-child"
+                {% endif %}
+              >
+                <a href="{{ link.url }}">
+                  {{ link.title | escape }}
+                </a>
+
+                {%- if link.links != blank -%}
+                  <ul>
+                    {%- for childlink in link.links -%}
+                      <li
+                        {% if childlink.links != blank %}
+                          class="has-grand-child"
+                        {% endif %}
+                      >
+                        <a href="{{ childlink.url }}">
+                          {{ childlink.title | escape }}
+                        </a>
+
+                        {%- if childlink.links != blank -%}
+                          <ul>
+                            {%- for grandchildlink in childlink.links -%}
+                              <li>
+                                <a href="{{ grandchildlink.url }}">
+                                  {{ grandchildlink.title | escape }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </nav>
+        <div class="d-flex gap-4">
+          {% if section.settings.search_icon %}
+            <div class="icon search-icon">
+              <a href="#" class="search-toggle">
+				{{- 'icon-search-glass.svg' | inline_asset_content -}}
+              </a>
+            </div>
+          {% endif %}
+          {% if section.settings.heart_icon %}
+            <div class="icon heart-icon">
+              <a href="/pages/wishlist">
+				{{- 'icon-heart-outline.svg' | inline_asset_content -}}
+              </a>
+            </div>
+          {% endif %}
+          {% if section.settings.cart_icon %}
+            <div class="icon cart-icon">
+              <a href="{{ routes.cart_url }}">
+				{{- 'icon-shopping-cart.svg' | inline_asset_content -}}
+                {% if cart.item_count > 0 %}
+                  <span class="cart-count">{{ cart.item_count }}</span>
+                {% endif %}
+              </a>
+            </div>
+          {% endif %}
+          {% if section.settings.account_icon %}
+            <div class="icon account-icon">
+              {% if customer %}
+                <a href="{{ routes.account_url }}">
+				  {{- 'icon-user-circle.svg' | inline_asset_content -}}
+                </a>
+              {% else %}
+                <a href="{{ routes.login_url }}">
+				  {{- 'icon-login-circle.svg' | inline_asset_content -}}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% if section.settings.search_icon %}
+	<div class="searchbox-backdrop">
+		<div class="searchbox">
+			<form action="/" class="">
+				<input type="text" placeholder="Search for...">
+			</form>
+			<div class="box">
+
+			</div>
+		</div>
+	</div>
+{% endif %}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if settings.logo %}
+      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_pinterest_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_tiktok_link | json }},
+      {{ settings.social_tumblr_link | json }},
+      {{ settings.social_snapchat_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_vimeo_link | json }}
+    ],
+    "url": {{ request.origin | append: page.url | json }}
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {% assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ request.origin | append: page.url | json }}
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "New Header With Menu",
+  "class": "section-header",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing"
+    },
+    {
+      "type": "header",
+      "content": "Other Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "account_icon",
+      "default": true,
+      "label": "Show User Icon",
+      "info": "by default it shows login icon, after login user icon will appear"
+    },
+    {
+      "type": "checkbox",
+      "id": "cart_icon",
+      "default": true,
+      "label": "Show Cart Icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "heart_icon",
+      "default": true,
+      "label": "Show Bookmarked Icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "search_icon",
+      "default": true,
+      "label": "Show Search Icon"
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Header With Menu"
+    }
+  ]
+}
+{% endschema %}
