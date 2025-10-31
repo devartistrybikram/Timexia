@@ -1,0 +1,162 @@
+<div class="cartbox-backdrop">
+  <div class="cartbox">
+    <div class="carts">
+      <div class="shadow cart-title">
+        <h2 class="d-inline-block mb-0">
+          Your Cart
+          {%- if cart.item_count > 0 -%}
+            (<span id="cart-count">{{ cart.item_count | default: 0 }}</span> items)
+          {%- endif -%}
+        </h2>
+      </div>
+      <div class="cart-items-list">
+        {% if cart.item_count > 0 %}
+          <div class="cart-table">
+            {% for item in cart.items %}
+              <div class="cart-item py-3 d-flex gap-4" data-line="{{ forloop.index }}">
+                <div class="cart-product-img cart-product">
+                  {% if item.image %}
+                    {{
+                      item.image
+                      | image_url: width: 280
+                      | image_tag:
+                        alt: item.product.title,
+                        widths: '165, 360, 533, 720, 940, 1066',
+                        height: 90,
+                        width: 180,
+                        loading: 'lazy'
+                    }}
+                  {% endif %}
+                </div>
+                <div class="cart-product-details cart-product">
+                  <div class="d-flex flex-column align-items-start justify-content-between">
+                    <span class="cart-item-title mb-0 fs-3">{{ item.product.title }}</span>
+                    <span id="item-price-{{ forloop.index }}" class="fs-5 mb-2">{{ item.line_price | money }}</span>
+                    <div class="d-flex gap-4">
+                      <div class="d-flex align-items-center cart-quantity">
+                        <button class="decrease" data-line="{{ forloop.index }}">-</button>
+                        <input
+                          type="number"
+                          class="quantity-input"
+                          value="{{ item.quantity }}"
+                          min="1"
+                          data-line="{{ forloop.index }}"
+                        >
+                        <button class="increase" data-line="{{ forloop.index }}">+</button>
+                      </div>
+                      <button class="remove-item" data-line="{{ forloop.index }}">
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="d-flex flex-column justify-content-between h-100 text-center">
+            <div>
+              <img
+                src="{{ 'illustration-empty-cart.svg' | asset_url }}"
+                alt="Icon description"
+                width="auto"
+                height="auto"
+                class="empty-cart-icon"
+              >
+              <p class="mb-2">Your basket is empty</p>
+              <p class="mb-0"><a href="/collections/all">All Products</a></p>
+            </div>
+            <div class="mb-4 pb-3">
+              {% assign trending_collection = collections['trending-products'] %}
+              <div class="mb-3 d-flex gap-2 align-items-center justify-content-between">
+                <h2 class="fs-2 fw-bold">{{ trending_collection.title }}</h2>
+                <span><a href="/collections/all">View All </a></span>
+              </div>
+              {% render 'trending-product-slider' %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      {% if cart.item_count > 0 %}
+        <div class="cart-footer d-flex align-items-center justify-content-between px-4 py-3">
+          <span id="cart-subtotal">{{ cart.total_price | default: 0.00 | money }}</span>
+          <a href="/cart" class="btn btn-primary px-3">Buy Now</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const formatMoney = (cents) => {
+      if (typeof SHOP_MONEY_FORMAT === 'undefined') {
+        return `₹${(cents / 100).toFixed(2)}`;
+      }
+      const amount = (cents / 100).toFixed(2);
+      return SHOP_MONEY_FORMAT.replace('{{ amount }}', amount);
+    };
+    const setButtonsDisabled = (line, disabled) => {
+      const buttons = document.querySelectorAll(
+        `.increase[data-line='${line}'], .decrease[data-line='${line}'], .remove-item[data-line='${line}']`
+      );
+      buttons.forEach((btn) => (btn.disabled = disabled));
+    };
+    const updateCart = async (line, quantity) => {
+      try {
+        setButtonsDisabled(line, true);
+        const response = await fetch('/cart/change.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ line: parseInt(line), quantity: quantity }),
+        });
+        const data = await response.json();
+        const itemData = data.items.find((item) => item.line === parseInt(line));
+        const priceEl = document.querySelector(`.cart-item[data-line='${line}'] #item-price-${line}`);
+        if (priceEl && itemData) {
+          priceEl.textContent = formatMoney(itemData.line_price);
+        }
+        const subtotalEl = document.getElementById('cart-subtotal');
+        if (subtotalEl) subtotalEl.textContent = formatMoney(data.total_price);
+        const countEl = document.getElementById('cart-count');
+        if (countEl) countEl.textContent = data.item_count;
+        const countElm = document.getElementById('cart-badge');
+        if (countElm) countElm.textContent = data.item_count;
+        if (quantity === 0) {
+          const itemEl = document.querySelector(`.cart-item[data-line='${line}']`);
+          if (itemEl) itemEl.remove();
+        }
+      } catch (error) {
+        console.error('Error updating cart:', error);
+      } finally {
+        setButtonsDisabled(line, false);
+      }
+    };
+    document.body.addEventListener('click', (e) => {
+      const line = e.target.dataset.line || e.target.closest('[data-line]')?.dataset.line;
+      if (!line) return;
+      const input = document.querySelector(`.quantity-input[data-line='${line}']`);
+      if (!input) return;
+      if (e.target.classList.contains('increase')) {
+        input.value = parseInt(input.value) + 1;
+        updateCart(line, parseInt(input.value));
+      } else if (e.target.classList.contains('decrease')) {
+        if (parseInt(input.value) > 1) {
+          input.value = parseInt(input.value) - 1;
+          updateCart(line, parseInt(input.value));
+        }
+      } else if (e.target.closest('.remove-item')) {
+        updateCart(line, 0);
+      }
+    });
+    document.querySelectorAll('.quantity-input').forEach((input) => {
+      input.addEventListener('change', (e) => {
+        const line = e.target.dataset.line;
+        let qty = parseInt(e.target.value);
+        if (isNaN(qty) || qty < 1) qty = 1;
+        e.target.value = qty;
+        updateCart(line, qty);
+      });
+    });
+  });
+</script>

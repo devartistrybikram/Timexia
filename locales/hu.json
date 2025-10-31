@@ -25,7 +25,10 @@
         "snapchat": "Snapchat",
         "youtube": "YouTube",
         "vimeo": "Vimeo",
-        "tiktok": "TikTok"
+        "tiktok": "TikTok",
+        "linkedin": "LinkedIn",
+        "whatsapp": "WhatsApp",
+        "google_store": "Google Store"
       }
     },
     "continue_shopping": "Vásárlás folytatása",

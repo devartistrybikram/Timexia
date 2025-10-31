@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $('.owl-home').each(function () {
+  $('.owl-carousel').each(function () {
     const $carousel = $(this);
     const breakpoints = {
       sm: { min: 0, max: 767 },
@@ -33,7 +33,7 @@ $(document).ready(function () {
             autoplayTimeout: $carousel.data('autoplay-timeout') || 5000,
             nav: $carousel.data('nav') || false,
             dots: $carousel.data('dots') || false,
-            center: $carousel.data('center') || true,
+            center: $carousel.data('center') || false,
             slideBy: $carousel.data('slideby') || 1,
             responsive: $carousel.data('responsive') 
               ? JSON.parse($carousel.attr('data-responsive').replace(/'/g, '"')) 

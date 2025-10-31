@@ -1,23 +1,18 @@
-<style type="text/css">
-  .template-404 .title + * {
-    margin-top: 1rem;
-  }
-
-  @media screen and (min-width: 750px) {
-    .template-404 .title + * {
-      margin-top: 2rem;
-    }
-  }
-</style>
-
-<div class="template-404 page-width page-margin center">
-  <p>
-    {{ 'templates.404.subtext' | t }}
+<div class="container text-center py-5">
+  <img
+    src="{{ 'illustration-404-error.svg' | asset_url }}"
+    alt="Icon description"
+    width="auto"
+    height="auto"
+    class="empty-cart-icon"
+    style="max-width: 250px;"
+  >
+  <h1 class="display-1 fw-bold">404</h1>
+  <h2 class="display-5 fw-bold mb-4">Page Not Found !!</h2>
+  <h3 class="fs-2 mb-4">Oops! The page you’re looking for doesn’t exist or has been moved.</h3>
+  <p class="d-flex justify-content-center gap-5">
+    <a href="/">Go Back Home</a>
+    <span>|</span>
+    <a href="/collections/all">All Collections</a>
   </p>
-  <h1 class="title">
-    {{ 'templates.404.title' | t }}
-  </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
-    {{ 'general.continue_shopping' | t }}
-  </a>
 </div>

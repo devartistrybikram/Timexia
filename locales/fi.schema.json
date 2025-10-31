@@ -89,6 +89,18 @@
           "label": "Vimeo",
           "info": "https://vimeo.com/shopify"
         },
+        "social_linkedin_link": {
+          "label": "linkedin",
+          "info": "https://linkedin.com/in/shopify"
+        },
+        "social_whatsapp_link": {
+          "label": "whatsapp",
+          "info": "https://whatsapp.com/shopify"
+        },
+        "social_google_store_link": {
+          "label": "google_store",
+          "info": "https://business.google.com/shopify"
+        },
         "header": {
           "content": "Sosiaalisen median tilit"
         }

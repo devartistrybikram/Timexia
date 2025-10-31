@@ -1,0 +1,43 @@
+<nav class="d-none d-lg-flex align-items-center">
+  <ul class="list-unstyled d-flex gap-4 mb-0">
+    {%- for link in section.settings.menu.links -%}
+      <li
+        {% if link.links != blank %}
+          class="has-child"
+        {% endif %}
+      >
+        <a href="{{ link.url }}">
+          {{ link.title | escape }}
+        </a>
+
+        {%- if link.links != blank -%}
+          <ul>
+            {%- for childlink in link.links -%}
+              <li
+                {% if childlink.links != blank %}
+                  class="has-grand-child"
+                {% endif %}
+              >
+                <a href="{{ childlink.url }}">
+                  {{ childlink.title | escape }}
+                </a>
+
+                {%- if childlink.links != blank -%}
+                  <ul>
+                    {%- for grandchildlink in childlink.links -%}
+                      <li>
+                        <a href="{{ grandchildlink.url }}">
+                          {{ grandchildlink.title | escape }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>

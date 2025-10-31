@@ -1,0 +1,19 @@
+<div class="searchbox-backdrop">
+  <div class="searchbox">
+    <form action="/" class="">
+      <input type="text" placeholder="Search for..." id="globalSearchBox" autocomplete="false" name="search">
+    </form>
+    <div class="box">
+      {% assign trending_collection = collections['trending-products'] %}
+      <div class="mb-3 d-flex gap-2 align-items-center justify-content-between">
+        <h2 class="fs-2 fw-bold">{{ trending_collection.title }}</h2>
+        <span><a href="/collections/all">View All </a></span>
+      </div>
+      {% if trending_collection.products_count > 0 %}
+        {% render 'trending-product-slider' %}
+      {% else %}
+        <p class="no-products">No trending products available right now.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>

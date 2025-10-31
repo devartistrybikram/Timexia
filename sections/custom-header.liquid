@@ -1,0 +1,147 @@
+<header class="container-fluid py-3 shadow" id="headerArea">
+  <div class="container py-3">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-block d-lg-none">
+        <div class="icon search-icon">
+          <a href="#" class="search-toggle">
+            {{- 'icon-menu-bar.svg' | inline_asset_content -}}
+          </a>
+        </div>
+      </div>
+      <div class="logobox">
+        <a href="/">
+          {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+          {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+          {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
+          {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{
+				settings.logo_width | times: 2 }}{% endcapture %}
+          {{
+            settings.logo
+            | image_url: width: 600
+            | image_tag:
+              class: 'header__heading-logo',
+              widths: widths,
+              height: logo_height,
+              width: settings.logo_width,
+              alt: logo_alt,
+              sizes: sizes,
+              preload: true
+          }}
+        </a>
+      </div>
+      <div class="menubar d-flex align-items-center gap-5">
+        {% render 'menubar-desktop' %}
+        <div class="d-flex gap-4">
+          {% if section.settings.search_icon %}
+            <div class="icon search-icon">
+              <a href="#" class="search-toggle">
+                {{- 'icon-search-glass.svg' | inline_asset_content -}}
+              </a>
+            </div>
+          {% endif %}
+          {% if section.settings.heart_icon %}
+            <div class="icon heart-icon">
+              <a href="/pages/wishlist">
+                {{- 'icon-heart-outline.svg' | inline_asset_content -}}
+              </a>
+            </div>
+          {% endif %}
+          {% if section.settings.cart_icon %}
+            <div class="icon cart-icon position-relative">
+              <a href="{{ routes.cart_url }}">
+                {{- 'icon-shopping-cart.svg' | inline_asset_content -}}
+                {% if cart.item_count > 0 %}
+                  <span
+                    class="cart-count position-absolute start-100 translate-middle bg-dark text-white rounded-circle"
+                    id="cart-badge"
+                  >
+                    {{- cart.item_count -}}
+                  </span>
+                {% endif %}
+              </a>
+            </div>
+          {% endif %}
+          {% if section.settings.account_icon %}
+            <div class="icon account-icon">
+              {% if customer %}
+                <a href="{{ routes.account_url }}">
+                  {{- 'icon-user-circle.svg' | inline_asset_content -}}
+                </a>
+              {% else %}
+                <a href="{{ routes.account_url }}">
+                  {{- 'icon-login-circle.svg' | inline_asset_content -}}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% if section.settings.search_icon %}
+  {% render 'quick-searchbox' %}
+{% endif %}
+
+{% if section.settings.cart_icon %}
+  {% render 'cart-sidebar' %}
+{% endif %}
+
+{% render 'header-schema' %}
+
+{% schema %}
+{
+  "name": "New Header With Menu",
+  "class": "section-header",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing"
+    },
+    {
+      "type": "header",
+      "content": "Other Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "account_icon",
+      "default": true,
+      "label": "Show User Icon",
+      "info": "by default it shows login icon, after login user icon will appear"
+    },
+    {
+      "type": "checkbox",
+      "id": "cart_icon",
+      "default": true,
+      "label": "Show Cart Icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "heart_icon",
+      "default": true,
+      "label": "Show Bookmarked Icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "search_icon",
+      "default": true,
+      "label": "Show Search Icon"
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Header With Menu"
+    }
+  ]
+}
+{% endschema %}

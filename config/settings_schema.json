@@ -1356,6 +1356,24 @@
         "id": "social_vimeo_link",
         "label": "t:settings_schema.social-media.settings.social_vimeo_link.label",
         "placeholder": "t:settings_schema.social-media.settings.social_vimeo_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_linkedin_link",
+        "label": "t:settings_schema.social-media.settings.social_linkedin_link.label",
+        "placeholder": "t:settings_schema.social-media.settings.social_linkedin_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_whatsapp_link",
+        "label": "t:settings_schema.social-media.settings.social_whatsapp_link.label",
+        "placeholder": "t:settings_schema.social-media.settings.social_whatsapp_link.info"
+      },
+      {
+        "type": "text",
+        "id": "social_google_store_link",
+        "label": "t:settings_schema.social-media.settings.social_google_store_link.label",
+        "placeholder": "t:settings_schema.social-media.settings.social_google_store_link.info"
       }
     ]
   },

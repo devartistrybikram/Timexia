@@ -1,0 +1,52 @@
+{% assign trending_collection = collections['trending-products'] %}
+{% if trending_collection.products_count > 0 %}
+  <div
+    class="owl-carousel owl-theme trending-products"
+    data-items="1.5"
+    data-loop="true"
+    data-margin="12"
+    data-autoplay="true"
+    data-autoplay-timeout="3000"
+    data-nav="false"
+    data-dots="false"
+    data-center="false"
+    data-slideby="1"
+  >
+    {% for product in trending_collection.products %}
+      <div class="item product-card rounded-2 overflow-hidden border">
+        <div class="text-start">
+          <a href="{{ product.url }}">
+            {% if product.featured_image %}
+              {{
+                product.featured_image
+                | image_url: width: 700
+                | image_tag:
+                  alt: product.title,
+                  class: 'product-image mb-3 shadow-sm',
+                  widths: '165, 360, 533, 720, 940, 1066',
+                  height: 180,
+                  width: 250,
+                  loading: 'lazy'
+              }}
+            {% else %}
+              <div class="no-image">No image available</div>
+            {% endif %}
+          </a>
+          <div class="px-2">
+            <a href="{{ product.url }}" class="product-title mb-1 fs-4 fw-bold">{{ product.title }}</a>
+            <p class="product-price mb-2">
+              {% if product.compare_at_price > product.price %}
+                <span class="original-price">{{ product.compare_at_price | money }}</span>
+                <span class="sale-price">{{ product.price | money }}</span>
+              {% else %}
+                <span class="sale-price">{{ product.price | money }}</span>
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="no-products">No trending products available right now.</p>
+{% endif %}
